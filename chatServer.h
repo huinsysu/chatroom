@@ -32,7 +32,17 @@ class chatServer {
         chatServer(int p);
         ~chatServer();
         void initSock();
+        static void *talk_thread(void *param);
+        int get_valid_connfd_index();
         void run();
 };
+
+typedef struct _thread_para_t {
+
+    chatServer *p_session;
+    int connfd_index;
+
+}thread_para_t;
+
 
 #endif
